@@ -2,5 +2,7 @@ back(){
 /scripts/pkgacct $1
 mv /home/cpmove-$1.tar.gz /home/$1/public_html
 chmod 644 /home/$1/public_html/cpmove-$1.tar.gz
-echo "EXAMPLE.com/cpmove-$1.tar.gz" | mail -s "Backup Generated" EMAIL@EMAIL.COM
+echo "$2/cpmove-$1.tar.gz" | mail -s "Backup Generated" $3
+clear
 }
+echo "back cPanel username, domain, and email"

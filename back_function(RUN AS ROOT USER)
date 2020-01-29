@@ -6,3 +6,17 @@ echo "$2/cpmove-$1.tar.gz" | mail -s "Backup Generated" $3
 clear
 }
 echo "back cPanel username, domain, and email"
+
+
+#same exact format, but zips up ALL cpanel users on the server
+bigback()
+{
+clear
+for USER in `\ls /var/cpanel/users/`;
+ do
+/scripts/pkgacct $USER
+done;
+mkdir /home/$1/public_html/backups
+mv /home/*.tar.gz /home/$1/public_html/backups
+echo "$2/backups/" | mail -s "Backups Generated" $3;
+}
